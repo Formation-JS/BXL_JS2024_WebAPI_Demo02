@@ -14,7 +14,12 @@ const playerController = {
     },
 
     add: (req, res) => {
-        res.sendStatus(501);
+        const data = req.body;
+
+        const playerAdded = playerModel.insert(data);
+
+        res.location(`/api/player/${playerAdded.id}`);
+        res.status(201).json(playerAdded);
     }
 }
 
