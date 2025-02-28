@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import mainRouter from './routers/index.js';
 
 //! Variable d'environnement
 const { NODE_ENV, PORT } = process.env;
@@ -44,6 +45,8 @@ app.get('/api/example', (req, res) => {
         message: 'Hello DigitalCity'
     });
 });
+
+app.use('/api', mainRouter);
 
 
 //! Demarrage
