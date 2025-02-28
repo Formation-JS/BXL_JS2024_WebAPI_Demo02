@@ -14,6 +14,11 @@ const playerController = {
     },
 
     add: (req, res) => {
+        if(!req.body) {
+            res.status(400).json({ error: 'No request body !'})
+            return;
+        }
+
         const data = req.body;
 
         const playerAdded = playerModel.insert(data);
