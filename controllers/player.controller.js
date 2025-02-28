@@ -1,4 +1,4 @@
-import { PlayerDTO } from "../dto/player.dto.js";
+import { PlayerDetailDTO, PlayerDTO } from "../dto/player.dto.js";
 import playerModel from "../models/player.model.js";
 
 const playerController = {
@@ -19,7 +19,7 @@ const playerController = {
         const playerAdded = playerModel.insert(data);
 
         res.location(`/api/player/${playerAdded.id}`);
-        res.status(201).json(playerAdded);
+        res.status(201).json(new PlayerDetailDTO(playerAdded));
     }
 }
 
