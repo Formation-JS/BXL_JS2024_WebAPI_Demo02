@@ -1,0 +1,27 @@
+{
+  "name": "webapi-02",
+  "version": "0.1.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env app.js",
+    "dev": "node --env-file=.env --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aurélien St",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.0.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Formation-JS/BXL_JS2024_WebAPI_Demo02.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Formation-JS/BXL_JS2024_WebAPI_Demo02/issues"
+  },
+  "homepage": "https://github.com/Formation-JS/BXL_JS2024_WebAPI_Demo02#readme",
+  "description": ""
+}
