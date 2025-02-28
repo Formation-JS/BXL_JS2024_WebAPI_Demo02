@@ -11,10 +11,10 @@
   "author": "Aurélien St",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.0.1",
     "morgan": "^1.10.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Formation-JS/BXL_JS2024_WebAPI_Demo02.git"
