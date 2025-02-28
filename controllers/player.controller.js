@@ -1,5 +1,6 @@
 import { PlayerDetailDTO, PlayerDTO } from "../dto/player.dto.js";
 import playerModel from "../models/player.model.js";
+import { PlayerSchema } from "../validators/player.validator.js";
 
 const playerController = {
 
@@ -19,7 +20,11 @@ const playerController = {
             return;
         }
 
-        const data = req.body;
+        const { data, success, error } = PlayerSchema.safeParse(req.body);
+        if(!success) {
+            res.status(422).json({ error: error.flatten().fieldErrors });
+            return;
+        }
 
         const playerAdded = playerModel.insert(data);
 
