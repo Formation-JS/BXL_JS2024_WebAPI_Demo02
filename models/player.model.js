@@ -1,13 +1,14 @@
 import { fakeDB } from "./fake-db.js";
 
+const defaultOptions = {};
 const playerModel = {
 
-    find: ({ offset = 0, limit = 3 }) => {
+    find: ({ offset = 0, limit = 3 } = defaultOptions) => {
         const players = fakeDB.players.slice(offset, offset + limit);
         return structuredClone(players);
     },
 
-    findFilter: (conditionCallback, { offset = 0, limit = 3 }) => {
+    findFilter: (conditionCallback, { offset = 0, limit = 3 } = defaultOptions) => {
         const players = fakeDB.players.filter(conditionCallback)
                                       .slice(offset, offset + limit);
         return structuredClone(players);
