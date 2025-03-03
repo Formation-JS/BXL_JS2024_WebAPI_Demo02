@@ -8,5 +8,7 @@ playerRouter.route('/')
     .get(playerController.getAll)
     .post(playerController.add);
 
+playerRouter.route('/:id')
+    .delete(playerController.delete);
 
 export default playerRouter;

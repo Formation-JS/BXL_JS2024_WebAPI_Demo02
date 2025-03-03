@@ -30,6 +30,23 @@ const playerController = {
 
         res.location(`/api/player/${playerAdded.id}`);
         res.status(201).json(new PlayerDetailDTO(playerAdded));
+    }, 
+
+    delete: (req, res) => {
+        const id = parseInt(req.params.id);
+
+        if(isNaN(id) || id < 1) {
+            res.status('400').json({ error : 'Bad parameter Id'});
+            return;
+        }
+
+        const isDeleted = playerModel.remove(id);
+
+        if(!isDeleted) {
+            res.sendStatus(404);
+            return
+        }
+        res.sendStatus(204);
     }
 }
 
