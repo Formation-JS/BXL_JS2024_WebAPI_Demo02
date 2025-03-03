@@ -47,7 +47,7 @@ const playerController = {
             res.status(404).json({ error: 'Player not found' });
         }
 
-        res.status(200).json(player);
+        res.status(200).json(new PlayerDetailDTO(player));
     }
 }
 
