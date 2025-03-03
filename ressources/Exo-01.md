@@ -36,4 +36,6 @@ Exemple :
 
  **• Utilisation du booléen "actif"** \
 Modifier le code pour que celui-ci prendre en compte le booléen "Active". \
-Un joueur dont la valeur "actif" est à "false" ne doit jamais être envoyé !
+ \- Un joueur dont la valeur "actif" est à "false" ne doit jamais être envoyé ! \
+ \- Quand on supprime un joueur, le booléen "actif" passe à false.
+    Si le booléen l'est déjà, on supprime réellement l'utilisateur.
