@@ -8,8 +8,13 @@ const playerController = {
     getAll: (req, res) => {
         const offset = parseInt(req.query.offset || 0);
         const limit = parseInt(req.query.limit || 10);
-        
-        const players = playerModel.find({ offset, limit }).map(p => new PlayerDTO(p));
+        const pseudo = req.query.pseudo?.toLowerCase();
+
+        const players = playerModel
+            .findFilter((player) => {
+                return !pseudo || player.username.toLowerCase().includes(pseudo)
+            }, { offset, limit })
+            .map(p => new PlayerDTO(p));
 
         res.status(200).json(players);
     },
