@@ -48,6 +48,23 @@ const playerController = {
         }
 
         res.status(200).json(new PlayerDetailDTO(player));
+    }, 
+
+    delete: (req, res) => {
+        const id = parseInt(req.params.id);
+
+        if(isNaN(id) || id < 1) {
+            res.status('400').json({ error : 'Bad parameter Id'});
+            return;
+        }
+
+        const isDeleted = playerModel.remove(id);
+
+        if(!isDeleted) {
+            res.sendStatus(404);
+            return
+        }
+        res.sendStatus(204);
     }
 }
 
