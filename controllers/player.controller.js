@@ -30,6 +30,24 @@ const playerController = {
 
         res.location(`/api/player/${playerAdded.id}`);
         res.status(201).json(new PlayerDetailDTO(playerAdded));
+    },
+
+    getById: (req, res) => {
+        const id = parseInt(req.params.id);
+        console.log(id, typeof(id));
+
+        if(isNaN(id) || id < 1) {
+            res.status(400).json({ error: 'Bad parameter Id' });
+            return;
+        }
+
+        const player = playerModel.findById(id);
+
+        if(!player) {
+            res.status(404).json({ error: 'Player not found' });
+        }
+
+        res.status(200).json(new PlayerDetailDTO(player));
     }
 }
 
