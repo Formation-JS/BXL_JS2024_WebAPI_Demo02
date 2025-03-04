@@ -6,9 +6,8 @@ const playerController = {
 
     //! /api/player?offset=2&limit=2
     getAll: (req, res) => {
-        const offset = parseInt(req.query.offset || 0);
-        const limit = parseInt(req.query.limit || 10);
-
+        const {offset, limit} = req.pagination
+        
         const pseudoData = (typeof(req.query.pseudo) === 'string') ? [req.query.pseudo] : req.query.pseudo;
         const pseudos = pseudoData?.map(pseudo => pseudo.toLowerCase());
 
@@ -41,7 +40,6 @@ const playerController = {
 
     getById: (req, res) => {
         const id = parseInt(req.params.id);
-        console.log(id, typeof(id));
 
         if(isNaN(id) || id < 1) {
             res.status(400).json({ error: 'Bad parameter Id' });
